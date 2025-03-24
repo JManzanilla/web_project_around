@@ -1,0 +1,44 @@
+.element {
+  display: grid;
+  max-width: 880px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px 17px;
+  margin: 0 auto;
+}
+.element__content {
+  box-sizing: border-box;
+  max-height: 361px;
+}
+.element__image {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+}
+.element__content-description {
+  max-height: 79px;
+  background-color: #fff;
+  display: flex;
+  color: black;
+  margin: auto;
+  border-radius: 0 0 10px 10px;
+  padding: 25px 0 31px;
+}
+.element__content-description-title {
+  margin: auto;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.element__content-like {
+  margin: auto;
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 320px) {
+}
