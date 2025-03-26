@@ -22,13 +22,20 @@
       <main class="main">
         <section class="profile">
           <div class="profile__content">
-            <img src="./images/profile.jpg" alt="" class="profile__image" />
-            <h1 class="profile__title">
-              Jacques Cousteau
-              <span class="profile__title-content">Explorador</span>
-            </h1>
-            <button type="submit" class="profile__lapiz">
-              <img src="./images/lapiz.png" alt="" />
+            <img
+              src="./images/profile.jpg"
+              alt="sergio perez"
+              class="profile__image"
+            />
+            <div>
+              <h2 class="profile__title">Jacques Cousteau</h2>
+              <p class="profile__title-content">Explorador</p>
+            </div>
+            <button
+              type="submit"
+              class="profile__lapiz profile__lapiz-action-add"
+            >
+              <img src="./images/lapiz.png" alt="logo de lapiz" />
             </button>
             <button type="submit" class="profile__cruz">
               <img src="./images/cruz.png" alt="" class="profile__cruz-logo" />
@@ -107,6 +114,41 @@
                 class="element__content-like"
               />
             </div>
+          </div>
+        </section>
+        <section class="pupop">
+          <div class="pupop__container">
+            <h3>Editar perfil</h3>
+            <form action="pupop__form">
+              <fieldset class="pupop__form-fieldset">
+                <input
+                  type="text"
+                  id=""
+                  class="pupop__form-input"
+                  name="name"
+                  placeholder="Nombre"
+                  required
+                />
+                <input
+                  type="text"
+                  id=""
+                  class="pupop__form-input"
+                  name="about"
+                  placeholder="Acerca de mi "
+                  required
+                />
+              </fieldset>
+              <button type="submit" class="pupop__form_btn_submit">
+                Guardar
+              </button>
+            </form>
+            <button type="submit" class="pupop__form_btn_close">
+              <img
+                src="./images/equis.png"
+                alt="cerrar ventana"
+                class="pupop__form_btn_close-image"
+              />
+            </button>
           </div>
         </section>
       </main>

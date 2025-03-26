@@ -1,5 +1,5 @@
 // Busquemos el formulario en el DOM
-let formElement = // Utiliza el método querySelector()
+let formElement =  // Utiliza el método querySelector()
 
 // Lo siguiente es el manipulador (handler) de entrega de formularios, aunque
 // no se enviará en ningún sitio todavía
