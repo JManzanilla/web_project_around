@@ -23,6 +23,9 @@
   margin: auto;
   border-radius: 0 0 10px 10px;
   padding: 25px 0 31px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .element__content-description-title {
   margin: auto;
@@ -31,12 +34,12 @@
   font-weight: 900;
   font-size: 24px;
   line-height: 100%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 .element__content-like {
   margin: auto;
+}
+.element__content-like:hover {
+  opacity: 0.6;
 }
 @media screen and (max-width: 768px) {
 }

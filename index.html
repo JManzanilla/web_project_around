@@ -22,91 +22,162 @@
       <main class="main">
         <section class="profile">
           <div class="profile__content">
-            <img src="./images/profile.jpg" alt="" class="profile__image" />
-            <h1 class="profile__title">
-              Jacques Cousteau
-              <span class="profile__title-content">Explorador</span>
-            </h1>
-            <button type="submit" class="profile__lapiz">
-              <img src="./images/lapiz.png" alt="" />
+            <img
+              src="./images/profile.jpg"
+              alt="sergio perez"
+              class="profile__image"
+            />
+            <div>
+              <h2 class="profile__title">Jacques Cousteau</h2>
+              <p class="profile__title-content">Explorador</p>
+            </div>
+            <button
+              type="submit"
+              class="profile__lapiz profile__lapiz-action-add"
+            >
+              <img src="./images/lapiz.png" alt="logo de lapiz" />
             </button>
             <button type="submit" class="profile__cruz">
-              <img src="./images/cruz.png" alt="" class="profile__cruz-logo" />
+              <img
+                src="./images/cruz.png"
+                alt="cruz para agregar imagenes"
+                class="profile__cruz-logo"
+              />
             </button>
           </div>
         </section>
         <section class="element">
           <div class="element__content">
-            <img src="./images/0.png" alt="" class="element__image" />
+            <img
+              src="./images/0.png"
+              alt="vista de un valle con rio y arboles"
+              class="element__image"
+            />
             <div class="element__content-description">
               <h3 class="element__content-description-title">
                 Valle de Yosemite
               </h3>
               <img
                 src="./images/Vector.svg"
-                alt=""
+                alt="un corazon"
                 class="element__content-like"
               />
             </div>
           </div>
           <div class="element__content">
-            <img src="./images/2.png" alt="" class="element__image" />
+            <img
+              src="./images/2.png"
+              alt="vista de un lago "
+              class="element__image"
+            />
             <div class="element__content-description">
               <h3 class="element__content-description-title">Lago Louise</h3>
               <img
                 src="./images/Vector.svg"
-                alt=""
+                alt="un corazon"
                 class="element__content-like"
               />
             </div>
           </div>
           <div class="element__content">
-            <img src="./images/3.png" alt="" class="element__image" />
+            <img
+              src="./images/3.png"
+              alt="vista de unas montañas al atardecer"
+              class="element__image"
+            />
             <div class="element__content-description">
               <h3 class="element__content-description-title">
                 Montañas Calvas
               </h3>
               <img
                 src="./images/Vector.svg"
-                alt=""
+                alt="un corazon"
                 class="element__content-like"
               />
             </div>
           </div>
           <div class="element__content">
-            <img src="./images/4.png" alt="" class="element__image" />
+            <img
+              src="./images/4.png"
+              alt="vista de una montalla con el cielo lleno de estrellas"
+              class="element__image"
+            />
             <div class="element__content-description">
               <h3 class="element__content-description-title">Latemar</h3>
               <img
                 src="./images/Vector.svg"
-                alt=""
+                alt="un corazon"
                 class="element__content-like"
               />
             </div>
           </div>
           <div class="element__content">
-            <img src="./images/5.png" alt="" class="element__image" />
+            <img
+              src="./images/5.png"
+              alt="vista de un lago donde se refleja la montaña"
+              class="element__image"
+            />
             <div class="element__content-description">
               <h3 class="element__content-description-title">
                 Vanois National Park
               </h3>
               <img
                 src="./images/Vector.svg"
-                alt=""
+                alt="un corazon"
                 class="element__content-like"
               />
             </div>
           </div>
           <div class="element__content">
-            <img src="./images/6.png" alt="" class="element__image" />
+            <img
+              src="./images/6.png"
+              alt="vista de un lago donde se aprecian varias canoas"
+              class="element__image"
+            />
             <div class="element__content-description">
               <h3 class="element__content-description-title">Lago di Braies</h3>
               <img
                 src="./images/Vector.svg"
-                alt=""
+                alt="un corazon"
                 class="element__content-like"
               />
             </div>
+          </div>
+        </section>
+        <section class="pupop">
+          <div class="pupop__container">
+            <h3 class="pupop__container-title">Editar perfil</h3>
+            <form action="pupop__form">
+              <fieldset class="pupop__form-fieldset">
+                <input
+                  type="text"
+                  id=""
+                  class="pupop__form-input"
+                  name="name"
+                  placeholder="Nombre"
+                  required
+                />
+                <input
+                  type="text"
+                  id=""
+                  class="pupop__form-input"
+                  name="about"
+                  placeholder="Acerca de mi "
+                  required
+                />
+                <button type="submit" class="pupop__form-btn-submit">
+                  Guardar
+                </button>
+              </fieldset>
+            </form>
+
+            <button type="submit" class="pupop__container_btn_close">
+              <img
+                src="./images/equis.png"
+                alt="cerrar ventana"
+                class="pupop__form_btn_close-image"
+              />
+            </button>
           </div>
         </section>
       </main>

@@ -11,13 +11,16 @@
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
+  margin: auto auto 16px;
 }
+
 .profile__title-content {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 100%;
+  margin: 0;
 }
 .profile__image {
   max-width: 120px;
@@ -29,18 +32,26 @@
   max-width: 24px;
   max-height: 24px;
   background-color: black;
-  margin: auto 0 auto 18px;
+  margin: 15px 0 0 18px;
   border: 1px solid #fff;
+  box-sizing: border-box;
+}
+.profile__lapiz:hover {
+  opacity: 0.6;
 }
 .profile__cruz {
   width: 150px;
   height: 50px;
   background-color: black;
   position: relative;
-  right: 0;
   align-content: center;
   margin: auto 0 auto auto;
   border: 1px solid #fff;
+  box-sizing: border-box;
+  top: -10px;
+}
+.profile__cruz:hover {
+  opacity: 0.6;
 }
 .profile__cruz-logo {
   max-width: 22px;
