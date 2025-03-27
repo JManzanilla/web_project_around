@@ -88,7 +88,7 @@
   color: #fff;
   pointer-events: initial;
 }
-.pupop__container_btn_close {
+.pupop__container-btn-close {
   position: absolute;
   max-width: 40px;
   max-height: 40px;
@@ -106,13 +106,13 @@
   .pupop__container-title {
     font-size: 18px;
   }
-  .pupop__container_btn_close {
+  .pupop__container-btn-close {
     top: -50px;
     right: 10px;
     max-width: 26px;
     max-height: 26px;
   }
-  .pupop__form_btn_close-image {
+  .pupop__form_btn-close-image {
     width: 26px;
     height: 26px;
   }
