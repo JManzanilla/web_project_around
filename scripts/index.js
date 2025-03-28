@@ -1,7 +1,7 @@
 let openProfilePupopBtn = document.querySelector(".profile__lapiz");
 let profileFormPupop = document.querySelector(".pupop");
 let closeProfilePupopBtn = document.querySelector(
-  ".pupop__container_btn_close"
+  ".pupop__container-btn-close"
 );
 let saveProfilePupopBtn = document.querySelector(".pupop__form-btn-submit");
 let inputProfileName = document.querySelector("#popup__form-name");
