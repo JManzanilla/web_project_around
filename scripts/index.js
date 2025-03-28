@@ -1,14 +1,14 @@
-let openProfilePupopBtn = document.querySelector(".profile__lapiz");
-let profileFormPupop = document.querySelector(".pupop");
-let closeProfilePupopBtn = document.querySelector(
+const openProfilePupopBtn = document.querySelector(".profile__lapiz");
+const profileFormPupop = document.querySelector(".pupop");
+const closeProfilePupopBtn = document.querySelector(
   ".pupop__container-btn-close"
 );
-let saveProfilePupopBtn = document.querySelector(".pupop__form-btn-submit");
-let inputProfileName = document.querySelector("#popup__form-name");
-let inputProfileAbout = document.querySelector("#popup__form-about");
-let nameProfileHeader = document.querySelector(".profile__title");
-let aboutProfileHeader = document.querySelector(".profile__title-content");
-let formElement = document.querySelector(".pupop__form");
+const saveProfilePupopBtn = document.querySelector(".pupop__form-btn-submit");
+const inputProfileName = document.querySelector("#popup__form-name");
+const inputProfileAbout = document.querySelector("#popup__form-about");
+const nameProfileHeader = document.querySelector(".profile__title");
+const aboutProfileHeader = document.querySelector(".profile__title-content");
+const formElement = document.querySelector(".pupop__form");
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -18,6 +18,8 @@ function handleProfileFormSubmit(evt) {
 }
 
 openProfilePupopBtn.addEventListener("click", () => {
+  inputProfileName.value = nameProfileHeader.textContent;
+  inputProfileAbout.value = aboutProfileHeader.textContent;
   profileFormPupop.classList.add("pupop__show");
   saveProfilePupopBtn.classList.add("pupop__form-btn-submit-disable");
 });
