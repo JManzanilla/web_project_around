@@ -124,7 +124,7 @@ function cloneElement(name, link) {
     );
   });
 
-  galleryImage.appendChild(clone);
+  galleryImage.prepend(clone);
 }
 
 initialCards.forEach((item) => {
