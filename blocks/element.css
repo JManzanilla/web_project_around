@@ -96,6 +96,10 @@
   /* .element__content {
     max-width: ;
   }*/
+  .element__content-btn {
+    top: 20px;
+    left: 310px;
+  }
 }
 
 @media screen and (max-width: 520px) {
@@ -107,5 +111,22 @@
   }
   .element__content {
     margin: 0 auto 25px;
+  }
+  .element__content-btn {
+    top: 20px;
+    left: 380px;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .element__content-btn {
+    top: 20px;
+    left: 340px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .element__content-btn {
+    top: 20px;
+    left: 240px;
   }
 }
