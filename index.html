@@ -34,7 +34,7 @@
             </div>
             <button
               type="submit"
-              class="profile__lapiz profile__lapiz-action-add"
+              class="profile__lapiz"
               id="profile__lapiz-action-add"
             >
               <img src="./images/lapiz.png" alt="logo de lapiz" />
@@ -49,112 +49,38 @@
           </div>
         </section>
         <section class="element">
-          <div class="element__content">
-            <img
-              src="./images/0.png"
-              alt="vista de un valle con rio y arboles"
-              class="element__image"
-            />
-            <div class="element__content-description">
-              <h3 class="element__content-description-title">
-                Valle de Yosemite
-              </h3>
+          <template id="card">
+            <div class="element__content" id="card__element__content">
               <img
-                src="./images/Vector.svg"
-                alt="un corazon"
-                class="element__content-like"
+                src="./images/0.png"
+                alt="vista de un valle con rio y arboles"
+                class="element__image"
               />
+              <button type="submit" class="element__content-btn">
+                <img
+                  src="./images/trash.png"
+                  alt="basura"
+                  class="element__content-trash"
+                />
+              </button>
+              <div class="element__content-description">
+                <h3 class="element__content-description-title">
+                  Valle de Yosemite
+                </h3>
+                <button class="element__content-like"></button>
+              </div>
             </div>
-          </div>
-          <div class="element__content">
-            <img
-              src="./images/2.png"
-              alt="vista de un lago "
-              class="element__image"
-            />
-            <div class="element__content-description">
-              <h3 class="element__content-description-title">Lago Louise</h3>
-              <img
-                src="./images/Vector.svg"
-                alt="un corazon"
-                class="element__content-like"
-              />
-            </div>
-          </div>
-          <div class="element__content">
-            <img
-              src="./images/3.png"
-              alt="vista de unas montañas al atardecer"
-              class="element__image"
-            />
-            <div class="element__content-description">
-              <h3 class="element__content-description-title">
-                Montañas Calvas
-              </h3>
-              <img
-                src="./images/Vector.svg"
-                alt="un corazon"
-                class="element__content-like"
-              />
-            </div>
-          </div>
-          <div class="element__content">
-            <img
-              src="./images/4.png"
-              alt="vista de una montalla con el cielo lleno de estrellas"
-              class="element__image"
-            />
-            <div class="element__content-description">
-              <h3 class="element__content-description-title">Latemar</h3>
-              <img
-                src="./images/Vector.svg"
-                alt="un corazon"
-                class="element__content-like"
-              />
-            </div>
-          </div>
-          <div class="element__content">
-            <img
-              src="./images/5.png"
-              alt="vista de un lago donde se refleja la montaña"
-              class="element__image"
-            />
-            <div class="element__content-description">
-              <h3 class="element__content-description-title">
-                Vanois National Park
-              </h3>
-              <img
-                src="./images/Vector.svg"
-                alt="un corazon"
-                class="element__content-like"
-              />
-            </div>
-          </div>
-          <div class="element__content">
-            <img
-              src="./images/6.png"
-              alt="vista de un lago donde se aprecian varias canoas"
-              class="element__image"
-            />
-            <div class="element__content-description">
-              <h3 class="element__content-description-title">Lago di Braies</h3>
-              <img
-                src="./images/Vector.svg"
-                alt="un corazon"
-                class="element__content-like"
-              />
-            </div>
-          </div>
+          </template>
         </section>
-        <section class="pupop">
-          <div class="pupop__container">
-            <h3 class="pupop__container-title">Editar perfil</h3>
-            <form class="pupop__form">
-              <fieldset class="pupop__form-fieldset">
+        <div class="popup" id="popup__formn">
+          <div class="popup__container">
+            <h3 class="popup__container-title">Editar perfil</h3>
+            <form class="popup__form">
+              <fieldset class="popup__form-fieldset">
                 <input
                   type="text"
                   id="popup__form-name"
-                  class="pupop__form-input"
+                  class="popup__form-input"
                   name="name"
                   placeholder="Nombre"
                   required
@@ -162,26 +88,74 @@
                 <input
                   type="text"
                   id="popup__form-about"
-                  class="pupop__form-input"
+                  class="popup__form-input"
                   name="about"
-                  placeholder="Acerca de mi "
+                  placeholder="Acerca de mi"
                   required
                 />
-                <button type="submit" class="pupop__form-btn-submit">
+                <button type="submit" class="popup__form-btn-submit">
                   Guardar
                 </button>
               </fieldset>
             </form>
-            <button type="submit" class="pupop__container-btn-close">
+            <button type="submit" class="popup__container-btn-close">
               <img
                 src="./images/equis.png"
-                alt="cerrar ventana"
-                class="pupop__form-btn-close-image"
-                id="pupop__form_btn-close-image"
+                alt="Equis para cerrar la ventana"
+                class="popup__form-btn-close-image"
+                id="popup__form_btn-close-image"
               />
             </button>
           </div>
-        </section>
+        </div>
+        <div class="popup" id="popup__image">
+          <div class="popup__container">
+            <h3 class="popup__container-title">Nuevo Lugar</h3>
+            <form class="popup__form" id="popup__form__image">
+              <fieldset class="popup__form-fieldset">
+                <input
+                  type="text"
+                  id="popup__form-title"
+                  class="popup__form-input"
+                  placeholder="Titulo"
+                  required
+                />
+                <input
+                  type="text"
+                  id="popup__form-image"
+                  class="popup__form-input"
+                  placeholder="Establece la imagen"
+                  required
+                />
+                <button type="submit" class="popup__form-btn-submit">
+                  Crear
+                </button>
+              </fieldset>
+            </form>
+            <button type="submit" class="popup__container-btn-close">
+              <img
+                src="./images/equis.png"
+                alt="cerrar ventana"
+                class="popup__form-btn-close-image"
+                id="popup__form_btn-close-image"
+              />
+            </button>
+          </div>
+        </div>
+        <div class="popup" id="popup__image-card">
+          <div class="popup__container-images">
+            <img src="" alt="" class="popup__container-image" />
+            <p class="popup__container-title popup__container__title-image"></p>
+            <button type="submit" class="popup__container-btn-close popup__btn">
+              <img
+                src="./images/equis.png"
+                alt="cerrar ventana"
+                class="popup__form-btn-close-image"
+                id="popup__form_btn-close-image"
+              />
+            </button>
+          </div>
+        </div>
       </main>
       <footer class="footer"><p>&#174; Around the U.S</p></footer>
     </div>
