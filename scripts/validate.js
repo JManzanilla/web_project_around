@@ -17,9 +17,9 @@ function hideInputError(formElement, inputElement, settings) {
 }
 
 function checkInputValidity(formElement, inputElement, settings) {
-  const isUrlField = inputElement.type === "url";
+  const trimmedValue = inputElement.value.trim(); // Elimina espacios en blanco
 
-  // Validación personalizada de longitud para ciertos campos
+  const isUrlField = inputElement.type === "url";
   const minLength = 4;
   const maxLength = 30;
 
@@ -28,14 +28,21 @@ function checkInputValidity(formElement, inputElement, settings) {
     inputElement.name === "name" ||
     inputElement.name === "about"
   ) {
-    if (
-      inputElement.value.length < minLength ||
-      inputElement.value.length > maxLength
-    ) {
+    if (trimmedValue.length === 0) {
       showInputError(
         formElement,
         inputElement,
-        `Debe tener entre ${minLength} y ${maxLength} caracteres`,
+        "No puedes dejar el campo vacío o solo con espacios",
+        settings
+      );
+      return false;
+    }
+
+    if (trimmedValue.length < minLength || trimmedValue.length > maxLength) {
+      showInputError(
+        formElement,
+        inputElement,
+        `Debe tener entre ${minLength} y ${maxLength} caracteres sin contar espacios`,
         settings
       );
       return false;
@@ -43,7 +50,7 @@ function checkInputValidity(formElement, inputElement, settings) {
   }
 
   if (!inputElement.validity.valid) {
-    if (isUrlField && inputElement.value !== "") {
+    if (isUrlField && trimmedValue !== "") {
       showInputError(
         formElement,
         inputElement,
@@ -65,8 +72,46 @@ function checkInputValidity(formElement, inputElement, settings) {
   return true;
 }
 
+/*function hasInvalidInput(inputList) {
+  return inputList.some(
+    (inputElement) =>
+      inputElement.value.trim().length === 0 || !inputElement.validity.valid
+  );
+}*/
+/*function hasInvalidInput(inputList, formElement, settings) {
+  return inputList.some((inputElement) => !checkInputValidity(formElement, inputElement, settings));
+}*/
+
 function hasInvalidInput(inputList) {
-  return inputList.some((inputElement) => !inputElement.validity.valid);
+  return inputList.some((inputElement) => {
+    const trimmedValue = inputElement.value.trim();
+    const isUrlField = inputElement.type === "url";
+
+    // Validación para campos de texto (name, about, title)
+    if (
+      inputElement.name === "title" ||
+      inputElement.name === "name" ||
+      inputElement.name === "about"
+    ) {
+      const minLength = 4;
+      const maxLength = 30;
+
+      // Verifica si está vacío o fuera de los límites de longitud
+      if (trimmedValue.length < minLength || trimmedValue.length > maxLength) {
+        return true; // campo inválido
+      }
+    }
+
+    // Validación para campos de tipo URL
+    if (isUrlField) {
+      if (trimmedValue === "" || !inputElement.validity.valid) {
+        return true;
+      }
+    }
+
+    // Para otros campos, usar validación nativa del navegador
+    return !inputElement.validity.valid;
+  });
 }
 
 function toggleButtonState(inputList, buttonElement, settings) {
