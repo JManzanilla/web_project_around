@@ -381,7 +381,7 @@ const profileFormPopup = document.querySelector(".popup");
 const closeProfilePopupBtn = document.querySelector(
   ".popup__container-btn-close"
 );
-const saveProfilePopupBtn = document.querySelector(".popup__form-btn-submit");
+/*const saveProfilePopupBtn = document.querySelector(".popup__form-btn-submit");*/
 const inputProfileName = document.querySelector("#popup__form-name");
 const inputProfileAbout = document.querySelector("#popup__form-about");
 const nameProfileHeader = document.querySelector(".profile__title");
@@ -393,12 +393,12 @@ const imageFormPopup = document.querySelector("#popup__image");
 const closeImagePopupBtn = imageFormPopup.querySelector(
   ".popup__container-btn-close"
 );
-const createImagePopupBtn = imageFormPopup.querySelector(
+/*const createImagePopupBtn = imageFormPopup.querySelector(
   ".popup__form-btn-submit"
-);
+);*/
 const inputTitleImage = document.querySelector("#popup__form-title");
 const inputImage = document.querySelector("#popup__form-image");
-const formElementImage = document.querySelector("#popup__form-image");
+const formElementImage = document.querySelector("#popup__form__image");
 
 const card = document.querySelector("#card");
 const galleryImage = document.querySelector(".element");
@@ -422,14 +422,18 @@ function handleProfileFormSubmit(evt) {
 
 function handleImageFormSubmit(evt) {
   evt.preventDefault();
+  console.log("titulo", inputTitleImage.value);
+  console.log("url", inputImage.value);
   const title = inputTitleImage.value;
   const imageUrl = inputImage.value;
+  console.log(imageUrl);
   cloneElement(title, imageUrl);
   formElementImage.reset();
   imageFormPopup.classList.remove("popup__show");
 }
 
 function cloneElement(name, link) {
+  console.log("url", link);
   const clone = card.content.cloneNode(true);
 
   const cloneElementCardTitle = clone.querySelector(
