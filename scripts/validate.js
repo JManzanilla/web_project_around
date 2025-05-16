@@ -1,5 +1,4 @@
 function showInputError(formElement, inputElement, errorMessage, settings) {
-  console.log(formElement);
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   if (!errorElement) return;
 
@@ -9,7 +8,6 @@ function showInputError(formElement, inputElement, errorMessage, settings) {
 }
 
 function hideInputError(formElement, inputElement, settings) {
-  console.log(formElement);
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   if (!errorElement) return;
 
@@ -19,7 +17,6 @@ function hideInputError(formElement, inputElement, settings) {
 }
 
 function checkInputValidity(formElement, inputElement, settings) {
-  console.log(formElement);
   const trimmedValue = inputElement.value.trim(); // Elimina espacios en blanco
 
   const isUrlField = inputElement.type === "url";
@@ -32,7 +29,6 @@ function checkInputValidity(formElement, inputElement, settings) {
     inputElement.name === "about"
   ) {
     if (trimmedValue.length === 0) {
-      console.log(formElement);
       showInputError(
         formElement,
         inputElement,
@@ -57,7 +53,6 @@ function checkInputValidity(formElement, inputElement, settings) {
 
   if (!inputElement.validity.valid) {
     if (isUrlField && trimmedValue !== "") {
-      console.log(formElement);
       showInputError(
         formElement,
         inputElement,
@@ -76,61 +71,17 @@ function checkInputValidity(formElement, inputElement, settings) {
   }
 
   hideInputError(formElement, inputElement, settings);
-  console.log(formElement);
+
   return true;
 }
 
 function hasInvalidInput(inputList, formElement, settings) {
-  console.log(formElement);
   return inputList.some(
     (inputElement) => !checkInputValidity(formElement, inputElement, settings)
   );
 }
 
-/*function hasInvalidInput(inputList) {
-  return inputList.some(
-    (inputElement) =>
-      inputElement.value.trim().length === 0 || !inputElement.validity.valid
-  );
-}*/
-/*function hasInvalidInput(inputList, formElement, settings) {
-  return inputList.some((inputElement) => !checkInputValidity(formElement, inputElement, settings));
-}*/
-
-/*function hasInvalidInput(inputList) {
-  return inputList.some((inputElement) => {
-    const trimmedValue = inputElement.value.trim();
-    const isUrlField = inputElement.type === "url";
-
-    // Validación para campos de texto (name, about, title)
-    if (
-      inputElement.name === "title" ||
-      inputElement.name === "name" ||
-      inputElement.name === "about"
-    ) {
-      const minLength = 4;
-      const maxLength = 30;
-
-      // Verifica si está vacío o fuera de los límites de longitud
-      if (trimmedValue.length < minLength || trimmedValue.length > maxLength) {
-        return true; // campo inválido
-      }
-    }
-
-    // Validación para campos de tipo URL
-    if (isUrlField) {
-      if (trimmedValue === "" || !inputElement.validity.valid) {
-        return true;
-      }
-    }
-
-    // Para otros campos, usar validación nativa del navegador
-    return !inputElement.validity.valid;
-  });
-}*/
-
 function toggleButtonState(inputList, buttonElement, settings, formElement) {
-  console.log(formElement);
   if (hasInvalidInput(inputList, formElement, settings)) {
     buttonElement.classList.add(settings.inactiveButtonClass);
     buttonElement.disabled = true;
@@ -141,16 +92,12 @@ function toggleButtonState(inputList, buttonElement, settings, formElement) {
 }
 
 function setEventListeners(formElement, settings) {
-  console.log(formElement);
   const inputList = Array.from(
     formElement.querySelectorAll(settings.inputSelector)
   );
-  console.log(formElement);
   const buttonElement = formElement.querySelector(
     settings.submitButtonSelector
   );
-  console.log(formElement);
-  /*  toggleButtonState(inputList, buttonElement, settings, formElement); */
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
@@ -171,18 +118,3 @@ export function enableValidation(settings) {
     setEventListeners(formElement, settings);
   });
 }
-
-/*export function resetValidation(formElement, settings) {
-  const inputList = Array.from(
-    formElement.querySelectorAll(settings.inputSelector)
-  );
-  const buttonElement = formElement.querySelector(
-    settings.submitButtonSelector
-  );
-
-  inputList.forEach((inputElement) => {
-    hideInputError(formElement, inputElement, settings);
-  });
-
-  toggleButtonState(inputList, buttonElement, settings);
-}*/

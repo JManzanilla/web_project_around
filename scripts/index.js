@@ -16,7 +16,7 @@ const profileFormPopup = document.querySelector(".popup");
 const closeProfilePopupBtn = document.querySelector(
   ".popup__container-btn-close"
 );
-/*const saveProfilePopupBtn = document.querySelector(".popup__form-btn-submit");*/
+
 const inputProfileName = document.querySelector("#popup__form-name");
 const inputProfileAbout = document.querySelector("#popup__form-about");
 const nameProfileHeader = document.querySelector(".profile__title");
@@ -28,9 +28,7 @@ const imageFormPopup = document.querySelector("#popup__image");
 const closeImagePopupBtn = imageFormPopup.querySelector(
   ".popup__container-btn-close"
 );
-/*const createImagePopupBtn = imageFormPopup.querySelector(
-  ".popup__form-btn-submit"
-);*/
+
 const inputTitleImage = document.querySelector("#popup__form-title");
 const inputImage = document.querySelector("#popup__form-image");
 const formElementImage = document.querySelector("#popup__form__image");
@@ -80,8 +78,6 @@ function cloneElement(name, link) {
   const cloneElementCardImage = clone.querySelector(".element__image");
   cloneElementCardImage.src = link;
   cloneElementCardImage.alt = name;
-  /*  cloneElementCardImage.dataset.image = link;
-  cloneElementCardImage.dataset.title = name; */
 
   const elementLikeImage = clone.querySelector(".element__content-like");
   const elementTrashImage = clone.querySelector(".element__content-trash");
@@ -131,7 +127,7 @@ document.addEventListener("keydown", closePopupOnEscape);
 openProfilePopupBtn.addEventListener("click", () => {
   inputProfileName.value = nameProfileHeader.textContent;
   inputProfileAbout.value = aboutProfileHeader.textContent;
-  /* resetValidation(formElement, validationConfig);*/
+
   profileFormPopup.classList.add("popup__show");
 });
 
@@ -143,7 +139,6 @@ formElement.addEventListener("submit", handleProfileFormSubmit);
 
 openPopupImageBtn.addEventListener("click", () => {
   imageFormPopup.classList.add("popup__show");
-  /*resetValidation(formElementImage, validationConfig);*/
 });
 
 closeImagePopupBtn.addEventListener("click", () => {
