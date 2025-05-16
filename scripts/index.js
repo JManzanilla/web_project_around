@@ -1,5 +1,5 @@
 /// === Importar validación ===
-import { enableValidation, resetValidation } from "./validate.js";
+import { enableValidation /*resetValidation*/ } from "./validate.js";
 
 const validationConfig = {
   formSelector: ".popup__form",
@@ -9,8 +9,6 @@ const validationConfig = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 };
-
-enableValidation(validationConfig);
 
 // === Sección de elementos ===
 const openProfilePopupBtn = document.querySelector(".profile__lapiz");
@@ -82,8 +80,8 @@ function cloneElement(name, link) {
   const cloneElementCardImage = clone.querySelector(".element__image");
   cloneElementCardImage.src = link;
   cloneElementCardImage.alt = name;
-  cloneElementCardImage.dataset.image = link;
-  cloneElementCardImage.dataset.title = name;
+  /*  cloneElementCardImage.dataset.image = link;
+  cloneElementCardImage.dataset.title = name; */
 
   const elementLikeImage = clone.querySelector(".element__content-like");
   const elementTrashImage = clone.querySelector(".element__content-trash");
@@ -98,10 +96,7 @@ function cloneElement(name, link) {
   });
 
   cloneElementCardImage.addEventListener("click", () => {
-    openImagePopup(
-      cloneElementCardImage.dataset.image,
-      cloneElementCardImage.dataset.title
-    );
+    openImagePopup(cloneElementCardImage.src, cloneElementCardImage.alt);
   });
 
   galleryImage.prepend(clone);
@@ -113,12 +108,6 @@ function openImagePopup(imageUrl, title) {
   imagePopupCard.classList.add("popup__show");
 }
 
-/*function closePopupOnClickOutside(evt) {
-  if (evt.target.classList.contains("popup")) {
-    evt.target.classList.remove("popup__show");
-    evt.target.removeEventListener("click", closePopupOnClickOutside);
-  }
-}*/
 function closePopupOnClickOutside(evt) {
   if (evt.target.classList.contains("popup")) {
     evt.target.classList.remove("popup__show");
@@ -133,11 +122,6 @@ function closePopupOnEscape(evt) {
   }
 }
 
-/*document.querySelectorAll(".popup").forEach((popup) => {
-  popup.addEventListener("click", function () {
-    popup.addEventListener("click", closePopupOnClickOutside);
-  });
-});*/
 document.querySelectorAll(".popup").forEach((popup) => {
   popup.addEventListener("click", closePopupOnClickOutside);
 });
@@ -147,19 +131,19 @@ document.addEventListener("keydown", closePopupOnEscape);
 openProfilePopupBtn.addEventListener("click", () => {
   inputProfileName.value = nameProfileHeader.textContent;
   inputProfileAbout.value = aboutProfileHeader.textContent;
-  resetValidation(formElement, validationConfig);
+  /* resetValidation(formElement, validationConfig);*/
   profileFormPopup.classList.add("popup__show");
 });
 
 closeProfilePopupBtn.addEventListener("click", () => {
   profileFormPopup.classList.remove("popup__show");
 });
-
+console.log(formElement);
 formElement.addEventListener("submit", handleProfileFormSubmit);
 
 openPopupImageBtn.addEventListener("click", () => {
   imageFormPopup.classList.add("popup__show");
-  resetValidation(formElementImage, validationConfig);
+  /*resetValidation(formElementImage, validationConfig);*/
 });
 
 closeImagePopupBtn.addEventListener("click", () => {
@@ -220,3 +204,4 @@ const initialCards = [
 initialCards.forEach((item) => {
   cloneElement(item.name, item.link);
 });
+enableValidation(validationConfig);
