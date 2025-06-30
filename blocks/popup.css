@@ -42,7 +42,8 @@
   border-radius: 25px;
 }
 .popup__container-image {
-  width: 100%;
+  width: 50vw;
+  height: 70vh;
   margin-bottom: 15px;
   border-radius: 10px;
 }
