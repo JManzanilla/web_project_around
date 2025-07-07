@@ -33,13 +33,13 @@
               <p class="profile__title-content">Explorador</p>
             </div>
             <button
-              type="submit"
+              type="button"
               class="profile__lapiz"
               id="profile__lapiz-action-add"
             >
               <img src="./images/lapiz.png" alt="logo de lapiz" />
             </button>
-            <button type="submit" class="profile__cruz">
+            <button type="button" class="profile__cruz">
               <img
                 src="./images/cruz.png"
                 alt="cruz para agregar imagenes"
@@ -56,7 +56,7 @@
                 alt="vista de un valle con rio y arboles"
                 class="element__image"
               />
-              <button type="submit" class="element__content-btn">
+              <button type="button" class="element__content-btn">
                 <img
                   src="./images/trash.png"
                   alt="basura"
@@ -87,8 +87,11 @@
                   id="popup__form-name"
                   class="popup__form-input popup__input"
                   name="name"
+                  placeholder="Nombre"
+                  required
+                  minlength="2"
+                  maxlength="40"
                 />
-
                 <span class="popup__error" id="popup__form-name-error"></span>
                 <input
                   type="text"
@@ -109,11 +112,7 @@
                 </button>
               </fieldset>
             </form>
-            <button
-              type="submit"
-              class="popup__container-btn-close"
-              type="button"
-            >
+            <button type="button" class="popup__container-btn-close">
               <img
                 src="./images/equis.png"
                 alt="Equis para cerrar la ventana"
@@ -128,7 +127,7 @@
             <h3 class="popup__container-title">Nuevo Lugar</h3>
             <form
               class="popup__form"
-              id="popup__form__image"
+              id="popup__form-image"
               name="image-form"
               novalidate
             >
@@ -137,22 +136,25 @@
                   type="text"
                   id="popup__form-title"
                   class="popup__form-input popup__input"
-                  placeholder="Titulo"
+                  name="title"
+                  placeholder="Título"
                   required
                   minlength="4"
                   maxlength="30"
                 />
                 <span class="popup__error" id="popup__form-title-error"></span>
-
                 <input
                   type="url"
-                  id="popup__form-image"
+                  id="popup__form-image-url"
                   class="popup__form-input popup__input"
-                  placeholder="Establece la imagen"
+                  name="image"
+                  placeholder="Enlace a la imagen"
                   required
                 />
-
-                <span class="popup__error" id="popup__form-image-error"></span>
+                <span
+                  class="popup__error"
+                  id="popup__form-image-url-error"
+                ></span>
                 <button
                   type="submit"
                   class="popup__form-btn-submit popup__form-btn-submit-disable"
@@ -161,11 +163,7 @@
                 </button>
               </fieldset>
             </form>
-            <button
-              type="submit"
-              class="popup__container-btn-close"
-              type="button"
-            >
+            <button type="button" class="popup__container-btn-close">
               <img
                 src="./images/equis.png"
                 alt="cerrar ventana"
@@ -179,7 +177,7 @@
           <div class="popup__container-images">
             <img src="" alt="" class="popup__container-image" />
             <p class="popup__container-title popup__container__title-image"></p>
-            <button type="submit" class="popup__container-btn-close popup__btn">
+            <button type="button" class="popup__container-btn-close popup__btn">
               <img
                 src="./images/equis.png"
                 alt="cerrar ventana"

@@ -1,107 +1,12 @@
+// === index.js ===
 import { Card } from "./Card.js";
+import { Section } from "./Section.js";
+import { PopupWithImage } from "./PopupWithImage.js";
+import { PopupWithForm } from "./PopupWithForm.js";
+import { UserInfo } from "./UserInfo.js";
 import { FormValidator } from "./FormValidator.js";
-import { openPopup, closePopup, setClosePopupListeners } from "./utils.js";
+import { validationConfig } from "./constants.js";
 
-const validationConfig = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__form-btn-submit",
-  inactiveButtonClass: "popup__form-btn-submit-disable",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
-};
-
-// ELEMENTOS
-const profilePopup = document.querySelector(".popup");
-const profileForm = document.querySelector(".popup__form[name='profile-form']");
-const nameInput = document.querySelector("#popup__form-name");
-const aboutInput = document.querySelector("#popup__form-about");
-const nameDisplay = document.querySelector(".profile__title");
-const aboutDisplay = document.querySelector(".profile__title-content");
-
-const imagePopup = document.querySelector("#popup__image");
-const imageForm = document.querySelector(".popup__form[name='image-form']");
-const titleInput = document.querySelector("#popup__form-title");
-const urlInput = document.querySelector("#popup__form-image");
-
-const gallery = document.querySelector(".element");
-const templateSelector = "#card";
-
-// Imagen expandida
-const imagePopupCard = document.querySelector("#popup__image-card");
-const popupImage = imagePopupCard.querySelector(".popup__container-image");
-const popupTitle = imagePopupCard.querySelector(".popup__container-title");
-
-// VALIDADORES
-const formValidators = {};
-document
-  .querySelectorAll(validationConfig.formSelector)
-  .forEach((formElement) => {
-    const formName = formElement.getAttribute("name");
-    const validator = new FormValidator(validationConfig, formElement);
-    formValidators[formName] = validator;
-    validator.enableValidation();
-  });
-
-// BOTONES Y EVENTOS
-
-document.querySelector(".profile__lapiz").addEventListener("click", () => {
-  nameInput.value = nameDisplay.textContent;
-  aboutInput.value = aboutDisplay.textContent;
-  formValidators["profile-form"].resetValidation(); // Limpiar errores y actualizar botón
-  openPopup(profilePopup);
-});
-
-document
-  .querySelector(".popup__container-btn-close")
-  .addEventListener("click", () => closePopup(profilePopup));
-
-profileForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  nameDisplay.textContent = nameInput.value;
-  aboutDisplay.textContent = aboutInput.value;
-  closePopup(profilePopup);
-});
-
-document.querySelector(".profile__cruz").addEventListener("click", () => {
-  formValidators["image-form"].resetValidation(); // Limpiar errores y actualizar botón
-  openPopup(imagePopup);
-});
-
-imageForm
-  .closest(".popup")
-  .querySelector(".popup__container-btn-close")
-  .addEventListener("click", () => closePopup(imagePopup));
-
-imageForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const newCard = new Card(
-    titleInput.value,
-    urlInput.value,
-    templateSelector,
-    handleImageClick
-  );
-  gallery.prepend(newCard.generateCard());
-  imageForm.reset();
-  closePopup(imagePopup);
-});
-
-document
-  .querySelector("#popup__image-card .popup__container-btn-close")
-  .addEventListener("click", () => closePopup(imagePopupCard));
-
-// Mostrar imagen expandida
-function handleImageClick(link, name) {
-  popupImage.src = link;
-  popupImage.alt = name;
-  popupTitle.textContent = name;
-  openPopup(imagePopupCard);
-}
-
-// Cerrar popups con fondo y Escape
-setClosePopupListeners();
-
-// Tarjetas iniciales
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -129,7 +34,70 @@ const initialCards = [
   },
 ];
 
-initialCards.forEach(({ name, link }) => {
-  const card = new Card(name, link, templateSelector, handleImageClick);
-  gallery.prepend(card.generateCard());
+const userInfo = new UserInfo({
+  nameSelector: ".profile__title",
+  aboutSelector: ".profile__title-content",
 });
+
+const imagePopup = new PopupWithImage("#popup__image-card");
+imagePopup.setEventListeners();
+
+const cardSection = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(item.name, item.link, "#card", (link, name) => {
+        imagePopup.open(link, name);
+      });
+      return card.generateCard();
+    },
+  },
+  ".element"
+);
+
+cardSection.renderItems();
+
+const profilePopup = new PopupWithForm("#popup__profile", (data) => {
+  userInfo.setUserInfo({
+    name: data.name,
+    about: data.about,
+  });
+  profilePopup.close();
+});
+profilePopup.setEventListeners();
+
+const addCardPopup = new PopupWithForm("#popup__image", (data) => {
+  const newCard = new Card(
+    data.title,
+    data.image,
+    "#card",
+    (link, name) => {
+      imagePopup.open(link, name);
+    }
+  );
+  cardSection.addItem(newCard.generateCard());
+  addCardPopup.close();
+});
+addCardPopup.setEventListeners();
+
+document.querySelector(".profile__lapiz").addEventListener("click", () => {
+  const userData = userInfo.getUserInfo();
+  document.querySelector("#popup__form-name").value = userData.name;
+  document.querySelector("#popup__form-about").value = userData.about;
+  profilePopup.open();
+});
+
+document.querySelector(".profile__cruz").addEventListener("click", () => {
+  addCardPopup.open();
+});
+
+// Validación de formularios
+const formValidators = {};
+document
+  .querySelectorAll(validationConfig.formSelector)
+  .forEach((formElement) => {
+    const formName = formElement.getAttribute("name");
+    const validator = new FormValidator(validationConfig, formElement);
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });

@@ -1,3 +1,4 @@
+// === Card.js ===
 export class Card {
   constructor(name, link, templateSelector, handleImageClick) {
     this._name = name;
@@ -34,7 +35,6 @@ export class Card {
 
   generateCard() {
     const cardElement = this._getTemplate();
-
     const titleElement = cardElement.querySelector(
       ".element__content-description-title"
     );
@@ -49,3 +49,5 @@ export class Card {
     return cardElement;
   }
 }
+
+// La clase Card está correcta y no requiere cambios para funcionar con el HTML y el flujo actual.
