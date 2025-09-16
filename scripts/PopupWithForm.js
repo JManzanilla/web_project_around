@@ -21,6 +21,7 @@ export class PopupWithForm extends Popup {
     super.setEventListeners(); // Esto ya permite cerrar el popup con la X y el fondo
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
+      console.log("formulario enviado ");
       this._handleFormSubmit(this._getInputValues());
     });
   }

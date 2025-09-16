@@ -43,8 +43,28 @@ export class FormValidator {
         return false;
       }
     }
+    if (
+      isUrl &&
+      (!inputElement.validity.valid ||
+        !/^https?:\/\/[^ "]+$/i.test(inputElement.value))
+    ) {
+      this._showInputError(
+        inputElement,
+        "Debes ingresar una URL válida que empiece con http:// o https://"
+      );
+      return false;
+    }
 
-    if (!inputElement.validity.valid) {
+    // Validación para otros campos
+    if (!isUrl && !inputElement.validity.valid) {
+      this._showInputError(inputElement, inputElement.validationMessage);
+      return false;
+    }
+
+    this._hideInputError(inputElement);
+    return true;
+  }
+  /*  if (!inputElement.validity.valid) {
       if (isUrl) {
         this._showInputError(inputElement, "Introduce una URL válida");
       } else {
@@ -52,11 +72,20 @@ export class FormValidator {
       }
       return false;
     }
+    // Sugerencia: Validar que la URL empiece con http:// o https://
+    const urlPattern = /^https?:\/\/.+/i;
+    if (isUrl && !urlPattern.test(inputElement.value)) {
+      this._showInputError(
+        inputElement,
+        "Debes de ingresar URL con http:// o https:// de lo contrario no se cargará la imagen"
+      );
+      return false;
+    }
 
     this._hideInputError(inputElement);
     return true;
   }
-
+ */
   _hasInvalidInput() {
     return this._inputList.some((input) => !this._checkInputValidity(input));
   }

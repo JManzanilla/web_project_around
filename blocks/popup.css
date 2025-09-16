@@ -1,5 +1,5 @@
 .popup {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.6);
   position: fixed;
   top: 0;
   left: 0;
@@ -10,7 +10,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(10px);
+  z-index: 2;
 }
+
 .popup__show {
   pointer-events: auto;
   opacity: 1;
@@ -31,8 +34,8 @@
   color: #fff;
 }
 .popup__container-images {
-  max-width: 65vw;
-  max-height: 65vh;
+  /*max-width: 65vw;
+  max-height: 65vh;*/
   color: black;
   position: relative;
   top: 0;
@@ -42,7 +45,7 @@
   border-radius: 25px;
 }
 .popup__container-image {
-  width: 50vw;
+  /*width: 50vw;*/
   height: 70vh;
   margin-bottom: 15px;
   border-radius: 10px;

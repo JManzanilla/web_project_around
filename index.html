@@ -23,14 +23,23 @@
       <main class="main">
         <section class="profile">
           <div class="profile__content">
-            <img
-              src="./images/profile.jpg"
-              alt="sergio perez"
-              class="profile__image"
-            />
+            <div class="profile__image-container">
+              <img src=" " alt="foto de perfil" class="profile__image" />
+              <button
+                type="button"
+                class="profile__avatar-edit-button"
+                id="profile__image-button-action"
+              >
+                <img
+                  src="./images/lapiz.png"
+                  alt="icono de lapiz para editar foto de perfil"
+                  class="profile__avatar-edit-button-image"
+                />
+              </button>
+            </div>
             <div>
-              <h2 class="profile__title">Jacques Cousteau</h2>
-              <p class="profile__title-content">Explorador</p>
+              <h2 class="profile__title">Cargando..</h2>
+              <p class="profile__title-content">Cargando...</p>
             </div>
             <button
               type="button"
@@ -49,6 +58,23 @@
           </div>
         </section>
         <section class="element">
+          <div class="container">
+            <div class="container__loader">
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+            </div>
+          </div>
           <template id="card">
             <div class="element__content" id="card__element__content">
               <img
@@ -175,9 +201,65 @@
         </div>
         <div class="popup" id="popup__image-card">
           <div class="popup__container-images">
-            <img src="" alt="" class="popup__container-image" />
+            <img src=" " alt=" " class="popup__container-image" />
             <p class="popup__container-title popup__container__title-image"></p>
             <button type="button" class="popup__container-btn-close popup__btn">
+              <img
+                src="./images/equis.png"
+                alt="cerrar ventana"
+                class="popup__form-btn-close-image"
+                id="popup__form_btn-close-image"
+              />
+            </button>
+          </div>
+        </div>
+        <div class="popup" id="popup__delete-card">
+          <div class="popup__container">
+            <h3 class="popup__container-title">¿Estás seguro?</h3>
+            <button
+              type="submit"
+              class="popup__form-btn-submit popup__form-btn-submit-delete"
+            >
+              Sí, eliminar
+            </button>
+            <button type="button" class="popup__container-btn-close">
+              <img
+                src="./images/equis.png"
+                alt="cerrar ventana"
+                class="popup__form-btn-close-image"
+                id="popup__form_btn-close-image"
+              />
+            </button>
+          </div>
+        </div>
+        <div class="popup" id="popup__profile-image">
+          <div class="popup__container">
+            <h3 class="popup__container-title">Cambiar foto de perfil</h3>
+            <form
+              class="popup__form"
+              id="popup__form-profile-image"
+              name="profile-image-form"
+              novalidate
+            >
+              <fieldset class="popup__form-fieldset">
+                <input
+                  type="url"
+                  id="popup__form-profile-image-url"
+                  class="popup__form-input popup__input"
+                  name="profile-image"
+                  placeholder="Enlace a la imagen de perfil"
+                  required
+                />
+                <span
+                  class="popup__error"
+                  id="popup__form-profile-image-url-error"
+                ></span>
+                <button type="submit" class="popup__form-btn-submit">
+                  Guardar
+                </button>
+              </fieldset>
+            </form>
+            <button type="button" class="popup__container-btn-close">
               <img
                 src="./images/equis.png"
                 alt="cerrar ventana"
