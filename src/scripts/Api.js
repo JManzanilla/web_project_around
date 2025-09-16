@@ -56,4 +56,11 @@ export class Api {
       body: JSON.stringify({ avatar }),
     }).then(this._checkResponse);
   }
+  updateUserInfo({ name, about }) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ name, about }),
+    }).then(this._checkResponse);
+  }
 }

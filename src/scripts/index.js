@@ -97,7 +97,7 @@ const cardSection = new Section(
 const imagePopup = new PopupWithImage("#popup__image-card");
 imagePopup.setEventListeners();
 
-const profilePopup = new PopupWithForm("#popup__profile", (data) => {
+/* const profilePopup = new PopupWithForm("#popup__profile", (data) => {
   const currentAvatar = userInfo.getUserInfo().avatar;
   userInfo.setUserInfo({
     name: data.name,
@@ -105,7 +105,21 @@ const profilePopup = new PopupWithForm("#popup__profile", (data) => {
     avatar: currentAvatar,
   });
   profilePopup.close();
+}); */
+const profilePopup = new PopupWithForm("#popup__profile", (data) => {
+  api
+    .updateUserInfo({ name: data.name, about: data.about })
+    .then((result) => {
+      userInfo.setUserInfo({
+        name: result.name,
+        about: result.about,
+        avatar: result.avatar,
+      });
+      profilePopup.close();
+    })
+    .catch((err) => console.log("Error al actualizar perfil:", err));
 });
+
 profilePopup.setEventListeners();
 const avatarPopup = new PopupWithForm("#popup__profile-image", (data) => {
   api
