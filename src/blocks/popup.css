@@ -49,6 +49,7 @@
   height: 70vh;
   margin-bottom: 15px;
   border-radius: 10px;
+  object-fit: cover;
 }
 .popup__container-title {
   font-family: "Inter";
@@ -209,7 +210,7 @@
     height: 26px;
   }
   .popup__container-image {
-    width: 85%;
+    width: 90%;
   }
   .popup__btn {
     top: -15px;
